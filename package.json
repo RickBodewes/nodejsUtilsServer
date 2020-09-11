@@ -1,0 +1,12 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "A basic nodejs server for the web",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo hey hello",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
