@@ -2,11 +2,21 @@
   "name": "nodeserver",
   "version": "1.0.0",
   "description": "A basic nodejs server for the web",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo hey hello",
-    "start": "nodemon server.js"
+    "start": "nodemon app.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RickBodewes/nodejsUtilsServer.git"
+  },
+  "author": "Rick_B",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "mysql": "^2.18.1"
+  }
 }
