@@ -3,7 +3,7 @@ const fs = require('fs');
 const mysql = require('mysql');
 
 // getting the config and saving it to an object
-const _config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+const _config = require('./config.json');
 console.log('configs fetched');
 
 // creating database connection
