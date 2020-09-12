@@ -3,7 +3,8 @@ const fs = require('fs');
 const mysql = require('mysql');
 
 // getting the config and saving it to an object
-let _config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+const _config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+console.log('configs fetched');
 
 // creating database connection
 const con = mysql.createConnection({
@@ -13,11 +14,22 @@ const con = mysql.createConnection({
     database: _config.mysql.database
 });
 
+// connect to database
+con.connect((err) => {
+    if(err){
+        throw err;
+    }else{
+        console.log('mysql connected');
+    }
+});
+
 // creating exress app
 const app = express();
+console.log('express app created');
 
 //listening for http requests on the given port
 app.listen(_config.port);
+console.log(`listening on port ${_config.port}`);
 
 // registering viewengine
 app.set('view engine', 'ejs');
@@ -25,8 +37,14 @@ app.set('view engine', 'ejs');
 // app.set('views', 'private');
 
 // listening for all pages
+// index
 app.get('/', (req, res) => {
     res.render('index', { title: 'index'});
+});
+
+// calendar
+app.get('/calendar', (req, res) => {
+    res.render('calendar', { title: 'calendar'});
 });
 
 // 404 error when no file can be found
