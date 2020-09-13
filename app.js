@@ -54,7 +54,7 @@ app.get('/calendar', (req, res) => {
 app.get('/events/:year/:month', (req, res) => {
     let query = `SELECT eventID, eventName, eventDescription, UNIX_TIMESTAMP(eventStartTime) as eventStartTime FROM events WHERE YEAR(eventStartTime) = ${con.escape(req.params.year)} AND MONTH(eventStartTime) = ${con.escape(req.params.month)}`;
     con.query(query, (err, result) => {
-        res.send(JSON.stringify(result));
+        res.json(result);
     });
 });
 
