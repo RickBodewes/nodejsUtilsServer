@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const mysql = require('mysql');
+const _ = require('lodash');
+const path = require('path'); 
 
 // getting the config and saving it to an object
 const _config = require('./config.json');
@@ -23,18 +25,19 @@ con.connect((err) => {
     }
 });
 
-// creating exress app
 const app = express();
 console.log('express app created');
 
-//listening for http requests on the given port
 app.listen(_config.port);
 console.log(`listening on port ${_config.port}`);
 
-// registering viewengine
 app.set('view engine', 'ejs');
-// how to change default views page
-// app.set('views', 'private');
+
+// serving static content
+app.use('/content', express.static(path.join(__dirname, 'public')));
+
+//passing post data to object
+app.use(express.urlencoded({ extended: true }));
 
 // listening for all pages
 // index
