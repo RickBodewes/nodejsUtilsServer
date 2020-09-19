@@ -50,8 +50,8 @@ function RenderCalendar(month, year){
         if(this.readyState == 4 && this.status == 200){
             dataEvents = JSON.parse(this.responseText);
 
-            if(dataEvents.length > 0){
-                for(Event of dataEvents){
+            if(dataEvents.data.length > 0){
+                for(Event of dataEvents.data){
                     let eventDate = new Date(Event.eventStartTime * 1000);
                     let eventCell = document.getElementById(`${eventDate.getFullYear()}_${eventDate.getMonth() + 1}_${eventDate.getDate() + 1}`);
                     let eventText = document.createTextNode(Event.eventName);
