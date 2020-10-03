@@ -61,7 +61,7 @@ function RenderCalendar(month, year){
             }
         }
     }
-    xhttp.open('GET', `events/${year}/${month + 1}`, true);
+    xhttp.open('GET', `/api/getevents/${year}/${month + 1}`, true);
     xhttp.send();
 }
 
